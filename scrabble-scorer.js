@@ -32,15 +32,22 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
-function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+function initialPrompt(word) {
+   word = input.question("Let's play some scrabble! Enter a word: ");
+   console.log(oldScrabbleScorer(word));
+   console.log(simpleScorer());            // TO TEST SIMPLESCORER
 };
 
 let newPointStructure;
 
-let simpleScorer;
+let simpleScorer = function(word) {
+   word = input.question("Simple Scorer: ") // TO TEST SIMPLESCORER
+   return `Points: ${word.length}`;
+};
 
-let vowelBonusScorer;
+let vowelBonusScorer = function(word) {
+   let vowels = ['A', 'E', 'I', 'O', 'U'];
+};
 
 let scrabbleScorer;
 

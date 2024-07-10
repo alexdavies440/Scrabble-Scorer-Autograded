@@ -43,21 +43,22 @@ let newPointStructure;
 
 let simpleScorer = function(word) {
    word = input.question("Simple Scorer: ") // TO TEST SIMPLESCORER
-   return `Points: ${word.length}`;
+   score = word.length;
+   return score;
 };
 
 let vowelBonusScorer = function(word) {
    word = input.question("Vowel Bonus Scorer: ").toUpperCase();
-   let letterPoints = 0;
+   let score = 0;
    let vowels = ['A', 'E', 'I', 'O', 'U'];
    for (let i = 0; i < word.length; i++) {
       if (vowels.includes(word[i])) {
-         letterPoints += 3
+         score += 3;
       } else {
-         letterPoints += 1;
+         score += 1;
       }
    }
-   return `Points: ${letterPoints}`;
+   return score;
 };
 
 

@@ -35,7 +35,8 @@ function oldScrabbleScorer(word) {
 function initialPrompt(word) {
    word = input.question("Let's play some scrabble! Enter a word: ");
    console.log(oldScrabbleScorer(word));
-   console.log(simpleScorer());            // TO TEST SIMPLESCORER
+   console.log(simpleScorer());        // TO TEST SIMPLESCORER
+   console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
 };
 
 let newPointStructure;
@@ -46,8 +47,19 @@ let simpleScorer = function(word) {
 };
 
 let vowelBonusScorer = function(word) {
+   word = input.question("Vowel Bonus Scorer: ").toUpperCase();
+   let letterPoints = 0;
    let vowels = ['A', 'E', 'I', 'O', 'U'];
+   for (let i = 0; i < word.length; i++) {
+      if (vowels.includes(word[i])) {
+         letterPoints += 3
+      } else {
+         letterPoints += 1;
+      }
+   }
+   return `Points: ${letterPoints}`;
 };
+
 
 let scrabbleScorer;
 

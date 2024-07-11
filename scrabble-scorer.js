@@ -42,7 +42,7 @@ function initialPrompt() {
    //console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
 };
 
-let newPointStructure;
+let newPointStructure = transform(oldPointStructure);
 
 let simpleScorer = function() {
    //word = input.question("Enter a word to score: ") // TO TEST SIMPLESCORER
@@ -76,7 +76,7 @@ const scoringAlgorithms = [
    },
    bonusVowels = {
       name: 'Bonus Vowels',
-      description: 'Vowels are worth 3 points, consonants are 1 point',
+      description: 'Vowels are worth 3 points, consonants are 1 point',  // Why is this not printing the second half?
       scoreFunction: vowelBonusScorer
    },
    oldScrabble = {
@@ -103,7 +103,11 @@ function scorerPrompt(selection) {
    return selection;
 }
 
-function transform() {};
+function transform(oldPointStructure) {
+   for (item in oldPointStructure) {
+// END RESULT SHOULD LOOK HAVE LOWERCASE LETTERS AS KEYS AND NUMBERS AS VALUES I THINK?
+   }
+};
 
 function runProgram() {
    initialPrompt();

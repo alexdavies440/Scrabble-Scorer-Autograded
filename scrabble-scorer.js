@@ -32,24 +32,26 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
-function initialPrompt(word) {
+function initialPrompt() {
    console.log("Let's play some Scrabble!" + '\n');
    word = input.question("Enter a word to score: ");
-   console.log(oldScrabbleScorer(word));
-   console.log(simpleScorer());        // TO TEST SIMPLESCORER
-   console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
+   return word;
+   //return word;
+   //console.log(oldScrabbleScorer(word));
+   //console.log(simpleScorer());        // TO TEST SIMPLESCORER
+   //console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
 };
 
 let newPointStructure;
 
-let simpleScorer = function(word) {
-   word = input.question("Simple Scorer: ") // TO TEST SIMPLESCORER
+let simpleScorer = function() {
+   //word = input.question("Enter a word to score: ") // TO TEST SIMPLESCORER
    score = word.length;
    return score;
 };
 
-let vowelBonusScorer = function(word) {
-   word = input.question("Enter a word to score: ")
+let vowelBonusScorer = function() {
+   //word = input.question("Enter a word to score: ")
    word = word.toUpperCase()
    let score = 0;
    let vowels = ['A', 'E', 'I', 'O', 'U'];
@@ -80,14 +82,25 @@ const scoringAlgorithms = [
    oldScrabble = {
       name: 'Scrabble',
       description: 'The traditional scoring algorithm',
-      scoreFunction: oldScrabbleScorer
+      scoreFunction: function oldScrabbleScorer() {}
    }
 ];
 
 function scorerPrompt(selection) {
-   selection = input.question(`will fill this in later. pick 0, 1, or 2: `);
+   
+   selection = input.question(`Which scoring algorithm would you like to use?
+   
+   0 - Simple: One point per character
+   1 - Vowel Bonus: Vowels are worth 3 points
+   2 - Scrabble: Uses scrabble point system
+
+   Enter 0, 1, or 2: `);
+
+   
+
    console.log(`algorithm name: ${scoringAlgorithms[selection].name}`)
-   console.log(`scorerFunction result: ${scoringAlgorithms[selection].scoreFunction()}`)
+   console.log(`Score for ${word}: ${scoringAlgorithms[selection].scoreFunction()}`)
+   return selection;
 }
 
 function transform() {};

@@ -66,7 +66,13 @@ let vowelBonusScorer = function() {
 };
 
 
-let scrabbleScorer;
+let scrabbleScorer = function() {
+   let score = 0;
+   console.log(oldScrabbleScorer(word));
+   for (let i = 0; i < word.length; i++) {
+      score = score + oldPointStructure[item]
+   }
+}
 
 const scoringAlgorithms = [
    simple = {
@@ -82,7 +88,7 @@ const scoringAlgorithms = [
    oldScrabble = {
       name: 'Scrabble',
       description: 'The traditional scoring algorithm',
-      scoreFunction: function oldScrabbleScorer() {}
+      scoreFunction: scrabbleScorer
    }
 ];
 

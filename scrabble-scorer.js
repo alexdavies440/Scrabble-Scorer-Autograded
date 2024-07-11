@@ -76,7 +76,7 @@ const scoringAlgorithms = [
    },
    bonusVowels = {
       name: 'Bonus Vowels',
-      description: 'Vowels are worth 3 points, consonants are 1 point',  // Why is this not printing the second half?
+      description: 'Vowels are worth 3 points,consonants are 1 point',  // Why is this not printing the second half?
       scoreFunction: vowelBonusScorer
    },
    oldScrabble = {
@@ -87,26 +87,28 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt(selection) {
-   
-   selection = input.question(`Which scoring algorithm would you like to use?
-   
-   0 - Simple: One point per character
-   1 - Vowel Bonus: Vowels are worth 3 points
-   2 - Scrabble: Uses scrabble point system
+      for (let i = 0; i < 3; i++) {
+         console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
+      }
+      selection = input.question('\n' + "Which scoring algorithm would you like to use?" + '\n' + "Enter 0, 1, or 2: ");
+      
+         //console.log("Enter 0, 1, or 2: ");
+      
 
-   Enter 0, 1, or 2: `);
-
-   
-
-   console.log(`algorithm name: ${scoringAlgorithms[selection].name}`)
+   console.log(`Algorithm name: ${scoringAlgorithms[selection].name}`)
    console.log(`Score for ${word}: ${scoringAlgorithms[selection].scoreFunction()}`)
    return selection;
 }
 
 function transform(oldPointStructure) {
+   let object;
    for (item in oldPointStructure) {
-// END RESULT SHOULD LOOK HAVE LOWERCASE LETTERS AS KEYS AND NUMBERS AS VALUES I THINK?
-   }
+      for (let i = 0; i < oldPointStructure[item].length; i++) {
+      object = oldPointStructure[item][i];
+      //console.log(object);
+      //console.log(object.toLowerCase());
+      }
+   } 
 };
 
 function runProgram() {

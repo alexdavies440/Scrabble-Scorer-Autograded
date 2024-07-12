@@ -12,7 +12,7 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-function oldScrabbleScorer(word) {
+function oldScrabbleScorer() {
 	word = word.toUpperCase();
 	let letterPoints = "";
  
@@ -34,19 +34,20 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    console.log("Let's play some Scrabble!" + '\n');
-   word = input.question("Enter a word to score: ");
-   return word;
+   userInput = input.question("Enter a word to score: ");
+   return userInput;
    //return word;
    //console.log(oldScrabbleScorer(word));
    //console.log(simpleScorer());        // TO TEST SIMPLESCORER
    //console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
 };
 
-let newPointStructure = transform(oldPointStructure);
+let newPointStructure;
 
 let simpleScorer = function() {
+   console.log(word);
    //word = input.question("Enter a word to score: ") // TO TEST SIMPLESCORER
-   score = word.length;
+   let score = word.length;
    return score;
 };
 
@@ -66,13 +67,7 @@ let vowelBonusScorer = function() {
 };
 
 
-let scrabbleScorer = function() {
-   let score = 0;
-   console.log(oldScrabbleScorer(word));
-   for (let i = 0; i < word.length; i++) {
-      score = score + oldPointStructure[item]
-   }
-}
+let scrabbleScorer;
 
 const scoringAlgorithms = [
    simple = {
@@ -88,11 +83,11 @@ const scoringAlgorithms = [
    oldScrabble = {
       name: 'Scrabble',
       description: 'The traditional scoring algorithm',
-      scoreFunction: scrabbleScorer
+      scoreFunction: oldScrabbleScorer
    }
 ];
 
-function scorerPrompt(selection) {
+function scorerPrompt() {
       for (let i = 0; i < 3; i++) {
          console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
       }
@@ -106,19 +101,10 @@ function scorerPrompt(selection) {
    return selection;
 }
 
-function transform(oldPointStructure) {
-   let object;
-   for (item in oldPointStructure) {
-      for (let i = 0; i < oldPointStructure[item].length; i++) {
-      object = oldPointStructure[item][i];
-      //console.log(object);
-      //console.log(object.toLowerCase());
-      }
-   } 
-};
+function transform() {};
 
 function runProgram() {
-   initialPrompt();
+   word = initialPrompt();
    scorerPrompt();
    
    

@@ -12,7 +12,7 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-function oldScrabbleScorer() {
+function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
  
@@ -32,10 +32,10 @@ function oldScrabbleScorer() {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
-function initialPrompt() {
+function initialPrompt(word) {
    console.log("Let's play some Scrabble!" + '\n');
-   userInput = input.question("Enter a word to score: ");
-   return userInput;
+   word = input.question("Enter a word to score: ");
+   return word;
    //return word;
    //console.log(oldScrabbleScorer(word));
    //console.log(simpleScorer());        // TO TEST SIMPLESCORER
@@ -44,14 +44,13 @@ function initialPrompt() {
 
 let newPointStructure;
 
-let simpleScorer = function() {
-   console.log(word);
+let simpleScorer = function(word) {
    //word = input.question("Enter a word to score: ") // TO TEST SIMPLESCORER
    let score = word.length;
    return score;
 };
 
-let vowelBonusScorer = function() {
+let vowelBonusScorer = function(word) {
    //word = input.question("Enter a word to score: ")
    word = word.toUpperCase()
    let score = 0;
@@ -70,14 +69,13 @@ let vowelBonusScorer = function() {
 let scrabbleScorer;
 
 const scoringAlgorithms = [
-   simple = {
-      name: 'Simple Score',
+   simple = {name: 'Simple Score',
       description: 'Each letter is worth 1 point',
       scoreFunction: simpleScorer
    },
    bonusVowels = {
       name: 'Bonus Vowels',
-      description: 'Vowels are worth 3 points,consonants are 1 point',  // Why is this not printing the second half?
+      description: 'Vowels are worth 3 points,consonants are 1 point', 
       scoreFunction: vowelBonusScorer
    },
    oldScrabble = {
@@ -97,17 +95,24 @@ function scorerPrompt() {
       
 
    console.log(`Algorithm name: ${scoringAlgorithms[selection].name}`)
-   console.log(`Score for ${word}: ${scoringAlgorithms[selection].scoreFunction()}`)
-   return selection;
+   console.log(`Score for '${word}': 
+${scoringAlgorithms[selection].scoreFunction(word)}`)
+   return ;
 }
 
-function transform() {};
+function transform(oldPointStructure) {               //Should return an object
+   let transformed;
+for (item in oldPointStructure) {
+
+
+}
+
+};
 
 function runProgram() {
    word = initialPrompt();
    scorerPrompt();
-   
-   
+   console.log(transform(oldPointStructure)); //to test transform()
 }
 
 // Don't write any code below this line //

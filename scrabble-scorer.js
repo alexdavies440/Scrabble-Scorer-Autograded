@@ -36,22 +36,15 @@ function initialPrompt(word) {
    console.log("Let's play some Scrabble!" + '\n');
    word = input.question("Enter a word to score: ");
    return word;
-   //return word;
-   //console.log(oldScrabbleScorer(word));
-   //console.log(simpleScorer());        // TO TEST SIMPLESCORER
-   //console.log(vowelBonusScorer());   // TO TEST VOWEL BONUS SCORER
 };
 
-let newPointStructure;
 
 let simpleScorer = function(word) {
-   //word = input.question("Enter a word to score: ") // TO TEST SIMPLESCORER
    let score = word.length;
    return score;
 };
 
 let vowelBonusScorer = function(word) {
-   //word = input.question("Enter a word to score: ")
    word = word.toUpperCase()
    let score = 0;
    let vowels = ['A', 'E', 'I', 'O', 'U'];
@@ -91,28 +84,29 @@ function scorerPrompt() {
       }
       selection = input.question('\n' + "Which scoring algorithm would you like to use?" + '\n' + "Enter 0, 1, or 2: ");
       
-         //console.log("Enter 0, 1, or 2: ");
-      
-
    console.log(`Algorithm name: ${scoringAlgorithms[selection].name}`)
    console.log(`Score for '${word}': 
 ${scoringAlgorithms[selection].scoreFunction(word)}`)
    return ;
 }
 
-function transform(oldPointStructure) {               //Should return an object
-   let transformed;
-for (item in oldPointStructure) {
+function transform(oldPointStructure) { 
+   let transformed = {}
 
-
-}
-
+   for (item in oldPointStructure) {
+      for (let i = 0; i < oldPointStructure[item].length; i++) {
+            transformed[oldPointStructure[item][i].toLowerCase()] = item;
+      }
+   }
+   return transformed;
 };
+
+let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
    word = initialPrompt();
    scorerPrompt();
-   console.log(transform(oldPointStructure)); //to test transform()
+   console.log(newPointStructure); //to test transform()
 }
 
 // Don't write any code below this line //

@@ -114,11 +114,11 @@ function transform(oldPointStructure) {
 };
 
 let newPointStructure = transform(oldPointStructure);
+newPointStructure[' '] = 0; // Counts spaces as 0
 
 function runProgram() {
    word = initialPrompt();
    scorerPrompt();
-   //console.log(newPointStructure); //to test transform()
 }
 
 // Don't write any code below this line //

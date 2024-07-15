@@ -34,7 +34,7 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt(word) {
    console.log("Let's play some Scrabble!" + '\n');
-   word = input.question("Enter a word to score: ");
+      word = input.question("Enter a word to score: ");
    return word;
 };
 
@@ -74,7 +74,8 @@ let scrabbleScorer = function(word) {
 };
 
 const scoringAlgorithms = [
-   simple = {name: 'Simple Score',
+   simple = {
+      name: 'Simple Score',
       description: 'Each letter is worth 1 point',
       scorerFunction: simpleScorer
    },
@@ -91,15 +92,21 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt() {
+   let selection;
+   const options = ['0', '1', '2'];
    console.log('\n' + "Which scoring algorithm would you like to use?" + '\n' )
       for (let i = 0; i < 3; i++) {
          console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
       }
       selection = input.question('\n' + "Enter 0, 1, or 2: ");
-      
+      while (!(options.includes(selection))) {
+         console.log(`You entered: ${selection}`);
+         selection = input.question('\n' + "Enter 0, 1, or 2: ");
+      }
    console.log(`Scored using: ${scoringAlgorithms[selection].name}`)
    console.log(`Score for '${word}': ${scoringAlgorithms[selection].scorerFunction(word)}`)
-   return ;
+      
+   return;
 }
 
 function transform(oldPointStructure) { 
@@ -114,7 +121,6 @@ function transform(oldPointStructure) {
 };
 
 let newPointStructure = transform(oldPointStructure);
-newPointStructure[' '] = 0; // Counts spaces as 0
 
 function runProgram() {
    word = initialPrompt();
